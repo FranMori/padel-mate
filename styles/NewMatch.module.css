@@ -1,0 +1,228 @@
+/* Page background (dégradé doux comme ta page Joueurs) */
+.page {
+    min-height: 100vh;
+    padding: 28px 18px 60px;
+    background:
+        radial-gradient(900px 420px at 70% 0%, rgba(236, 72, 153, 0.18), transparent 55%),
+        radial-gradient(900px 520px at 0% 40%, rgba(99, 102, 241, 0.16), transparent 55%),
+        linear-gradient(180deg, rgba(248, 250, 252, 1), rgba(245, 247, 251, 1));
+}
+
+.shell {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: rgba(15, 23, 42, 0.92);
+}
+
+.pill {
+    font-size: 12px;
+    font-weight: 650;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    color: rgba(30, 41, 59, 0.82);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    padding: 16px;
+}
+
+.state {
+    padding: 14px 12px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.03);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    color: rgba(15, 23, 42, 0.75);
+    font-weight: 600;
+}
+
+.stateError {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.18);
+    color: rgba(127, 29, 29, 0.95);
+}
+
+.form {
+    display: grid;
+    gap: 14px;
+}
+
+/* Top fields: date + scores */
+.topGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    gap: 12px;
+}
+
+@media (max-width: 720px) {
+    .topGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field {
+    display: grid;
+    gap: 7px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.55);
+}
+
+.input,
+.select {
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0 12px;
+    outline: none;
+    font-size: 14px;
+    color: rgba(15, 23, 42, 0.88);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+.input:focus,
+.select:focus {
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.12);
+}
+
+.select:disabled,
+.input:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Teams grid */
+.teamsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 720px) {
+    .teamsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.teamCard {
+    border-radius: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    background: rgba(255, 255, 255, 0.75);
+    padding: 12px;
+}
+
+.teamHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.teamTag {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.62);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+}
+
+.row:last-child {
+    margin-bottom: 0;
+}
+
+.rowLabel {
+    font-weight: 750;
+    color: rgba(15, 23, 42, 0.62);
+}
+
+/* Notice (error/success) */
+.notice {
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    font-weight: 650;
+}
+
+.noticeError {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.18);
+    color: rgba(127, 29, 29, 0.95);
+}
+
+.noticeSuccess {
+    background: rgba(34, 197, 94, 0.10);
+    border-color: rgba(34, 197, 94, 0.20);
+    color: rgba(20, 83, 45, 0.95);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+.button {
+    height: 44px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(236, 72, 153, 1));
+    box-shadow: 0 14px 28px rgba(99, 102, 241, 0.18);
+    transition: transform 0.06s ease, filter 0.12s ease;
+}
+
+.button:hover {
+    filter: brightness(1.03);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    filter: none;
+}

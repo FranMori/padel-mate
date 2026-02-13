@@ -1,0 +1,340 @@
+/* styles/Standings.module.css */
+
+.page {
+    min-height: 100vh;
+    padding: 40px 16px 64px;
+    background:
+        radial-gradient(900px 380px at 70% -80px, rgba(200, 120, 220, 0.32), transparent 70%),
+        radial-gradient(800px 360px at 10% 120%, rgba(120, 180, 255, 0.20), transparent 70%),
+        linear-gradient(#f7f8fb, #f6f7fb);
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.titleWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.title {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    box-shadow: 0 10px 28px rgba(2, 6, 23, 0.06);
+    color: #334155;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.countDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.25);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 22px;
+    box-shadow: 0 26px 70px rgba(2, 6, 23, 0.14);
+    overflow: hidden;
+}
+
+.cardBody {
+    padding: 18px;
+}
+
+.state {
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(248, 250, 252, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    color: #475569;
+    font-size: 14px;
+}
+
+.error {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    background: rgba(254, 226, 226, 0.55);
+    color: #b91c1c;
+    font-size: 14px;
+}
+
+.tableWrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    /* IMPORTANT */
+    min-width: 900px;
+    /* titres longs */
+}
+
+/* Largeurs via colgroup (plus fiable que sur th/td) */
+.colPlayer {
+    width: 34%;
+}
+
+.colSmall {
+    width: 7.5%;
+}
+
+/* MJ/V/D/PG/PP */
+.colDiff {
+    width: 18%;
+}
+
+.colRatio {
+    width: 18%;
+}
+
+/* TAUX VICTOIRE */
+
+.thead th {
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #64748b;
+    background: rgba(248, 250, 252, 0.9);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    padding: 12px 14px;
+    white-space: nowrap;
+    /* évite le wrap */
+}
+
+.tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    color: #0f172a;
+    font-size: 14px;
+}
+
+.tbody tr:hover td {
+    background: rgba(248, 250, 252, 0.72);
+}
+
+.num {
+    text-align: center;
+    vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+}
+
+.thead th.num {
+    text-align: center;
+}
+
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    /* un peu plus large = alignement plus stable */
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.pillCell {
+    text-align: center;
+}
+
+
+.nameCell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.nameCell>div:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #0f172a;
+    background: rgba(226, 232, 240, 0.65);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.pillGood {
+    color: #3b2bbd;
+    border-color: rgba(124, 58, 237, 0.24);
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.14), rgba(236, 72, 153, 0.10));
+}
+
+.pillNeutral {
+    color: #334155;
+    background: rgba(248, 250, 252, 0.7);
+}
+
+.pillBad {
+    color: #b91c1c;
+    border-color: rgba(239, 68, 68, 0.22);
+    background: rgba(254, 226, 226, 0.6);
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .cardBody {
+        padding: 14px;
+    }
+}
+
+/* --- Responsive mobile layout --- */
+
+.mobileList {
+    display: none;
+    gap: 10px;
+}
+
+.mobileCard {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 12px 12px;
+}
+
+.mobileTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.mobileName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.mobileNameText {
+    font-weight: 700;
+    color: #0f172a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mobileMeta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.kpi {
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 14px;
+    padding: 8px 8px;
+    background: rgba(248, 250, 252, 0.7);
+    text-align: center;
+}
+
+.kpiLabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+}
+
+.kpiValue {
+    margin-top: 4px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: #0f172a;
+}
+
+/* Keep content above bottom nav */
+.page {
+    padding-bottom: 92px;
+    /* space for bottom nav */
+}
+
+/* Switch layout on small screens */
+@media (max-width: 640px) {
+    .tableWrap {
+        display: none;
+        /* hide table on mobile */
+    }
+
+    .mobileList {
+        display: grid;
+    }
+
+    .subtitle {
+        max-width: 80vw;
+    }
+}

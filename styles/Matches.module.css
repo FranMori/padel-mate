@@ -1,0 +1,155 @@
+.page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.primaryLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 650;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.92);
+    color: white;
+}
+
+.primaryLink:hover {
+    filter: brightness(1.06);
+}
+
+.subtle {
+    color: rgba(0, 0, 0, 0.62);
+    margin: 0 0 18px;
+}
+
+.stateBox {
+    padding: 14px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.error {
+    border-color: rgba(220, 38, 38, 0.25);
+    background: rgba(220, 38, 38, 0.06);
+    color: rgba(127, 29, 29, 0.95);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 14px 14px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-weight: 650;
+    color: rgba(0, 0, 0, 0.72);
+}
+
+.scorePill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-weight: 750;
+}
+
+.teams {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.35);
+    font-weight: 800;
+}
+
+.teamBox {
+    border: 1px dashed rgba(0, 0, 0, 0.14);
+    border-radius: 14px;
+    padding: 10px 10px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.teamTitle {
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.45);
+    margin: 0 0 8px;
+}
+
+.slot {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.slotLabel {
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 650;
+}
+
+.slotName {
+    font-weight: 750;
+}
+
+.empty {
+    color: rgba(0, 0, 0, 0.35);
+    font-style: italic;
+}
