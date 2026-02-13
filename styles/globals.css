@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+  /* hauteur approximative de la bottom nav */
+  --bottom-nav-h: 92px;
+}
+
+/* Réserve de la place en bas sur toutes les pages */
+body {
+  padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+}
