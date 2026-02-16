@@ -338,3 +338,16 @@
         max-width: 80vw;
     }
 }
+
+.clickRow {
+    cursor: pointer;
+}
+
+.clickRow:focus {
+    outline: 2px solid rgba(124, 58, 237, 0.45);
+    outline-offset: -2px;
+}
+
+.clickRow:hover {
+    background: rgba(248, 250, 252, 0.7);
+}

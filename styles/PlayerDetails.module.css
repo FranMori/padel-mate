@@ -1,0 +1,300 @@
+.page {
+    /* IMPORTANT: on réserve le bas pour la bottom nav (92px) + safe area iPhone */
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 16px 14px 18px;
+}
+
+.header {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.back {
+    width: fit-content;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.titleWrap {
+    display: grid;
+    gap: 4px;
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+}
+
+.subtitle {
+    margin: 0;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.section {
+    margin-top: 16px;
+}
+
+.sectionHead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.h2 {
+    margin: 0;
+    font-size: 16px;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+}
+
+.smallHint {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.state {
+    padding: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(248, 250, 252, 0.75);
+    border-radius: 16px;
+    color: #475569;
+    font-weight: 600;
+}
+
+.error {
+    padding: 14px;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    background: rgba(254, 242, 242, 0.85);
+    border-radius: 16px;
+    color: #b91c1c;
+    font-weight: 700;
+}
+
+/* --- KPI --- */
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.kpiCard {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 18px;
+    padding: 12px 12px;
+}
+
+.kpiLabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    font-weight: 800;
+}
+
+.kpiValue {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+}
+
+.kpiSub {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 800;
+}
+
+/* --- Partners --- */
+.partnerGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.partnerCard {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 18px;
+    padding: 12px 12px;
+}
+
+.partnerTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.partnerName {
+    font-weight: 900;
+    color: #0f172a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.partnerRate {
+    font-weight: 900;
+    color: #3b2bbd;
+    font-variant-numeric: tabular-nums;
+}
+
+.partnerMeta {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.metaPill {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #334155;
+}
+
+/* --- History --- */
+.historyGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.matchCard {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 18px;
+    padding: 12px 12px;
+    overflow: hidden;
+}
+
+.win {
+    box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.15);
+}
+
+.loss {
+    box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.15);
+}
+
+.matchTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.matchDate {
+    font-size: 12px;
+    font-weight: 800;
+    color: #64748b;
+}
+
+.matchBadge {
+    font-size: 12px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.matchScore {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.matchSide {
+    font-size: 12px;
+    font-weight: 900;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.matchTeams {
+    margin-top: 12px;
+    display: grid;
+    gap: 8px;
+}
+
+.teamRow {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.teamLabel {
+    font-size: 12px;
+    font-weight: 900;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.teamNames {
+    font-weight: 800;
+    color: #0f172a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sep {
+    color: #94a3b8;
+    font-weight: 900;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .kpiGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .partnerGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .historyGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding: 14px 12px 16px;
+    }
+
+    .matchScore {
+        font-size: 20px;
+    }
+
+    .teamRow {
+        grid-template-columns: 64px 1fr;
+    }
+}

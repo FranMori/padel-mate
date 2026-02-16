@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { fetchPlayers } from "../../lib/playersApi";
 import styles from "../../styles/Standings.module.css";
+import { useRouter } from "next/router";
 
 type MatchRow = {
     aScore: number;
@@ -32,6 +33,8 @@ function toPlayersById(players: Array<{ id: string; name: string }>): PlayersByI
 }
 
 export default function StandingsPage() {
+    const router = useRouter();
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -60,7 +63,7 @@ export default function StandingsPage() {
         function applyResult(playerIds: string[], forScore: number, againstScore: number, isWin: boolean) {
             for (const id of playerIds) {
                 const s = stats[id];
-                if (!s) continue; // sécurité si un id n'existe pas dans playersById (ou joueur supprimé)
+                if (!s) continue;
                 s.played += 1;
                 s.pointsFor += forScore;
                 s.pointsAgainst += againstScore;
@@ -106,7 +109,7 @@ export default function StandingsPage() {
                 if (cancelled) return;
                 setPlayersById(toPlayersById(players));
 
-                // Matches + participants (based on your schema)
+                // Matches + participants
                 const { data, error } = await supabase
                     .from("matches")
                     .select(
@@ -170,6 +173,17 @@ export default function StandingsPage() {
         return computeStandings(playersById, matches);
     }, [playersById, matches]);
 
+    const goPlayer = (id: string) => {
+        router.push(`/players/${id}`);
+    };
+
+    const onRowKeyDown = (e: React.KeyboardEvent, id: string) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            goPlayer(id);
+        }
+    };
+
     return (
         <main className={styles.page}>
             <div className={styles.container}>
@@ -194,6 +208,7 @@ export default function StandingsPage() {
 
                         {!loading && !error && (
                             <>
+                                {/* TABLE (desktop/tablet) */}
                                 <div className={styles.tableWrap}>
                                     <table className={styles.table}>
                                         <colgroup>
@@ -206,6 +221,7 @@ export default function StandingsPage() {
                                             <col className={styles.colDiff} />
                                             <col className={styles.colRatio} />
                                         </colgroup>
+
                                         <thead className={styles.thead}>
                                             <tr>
                                                 <th className={styles.colPlayer}>JOUEUR</th>
@@ -225,7 +241,15 @@ export default function StandingsPage() {
                                                     row.diff > 0 ? styles.pillGood : row.diff < 0 ? styles.pillBad : styles.pillNeutral;
 
                                                 return (
-                                                    <tr key={row.playerId}>
+                                                    <tr
+                                                        key={row.playerId}
+                                                        onClick={() => goPlayer(row.playerId)}
+                                                        onKeyDown={(e) => onRowKeyDown(e, row.playerId)}
+                                                        role="button"
+                                                        tabIndex={0}
+                                                        className={styles.clickRow}
+                                                        aria-label={`Voir les matchs de ${row.name}`}
+                                                    >
                                                         <td>
                                                             <div className={styles.nameCell}>
                                                                 <div className={styles.rank}>{idx + 1}</div>
@@ -258,13 +282,23 @@ export default function StandingsPage() {
                                         </div>
                                     )}
                                 </div>
+
+                                {/* MOBILE CARDS */}
                                 <div className={styles.mobileList}>
                                     {standings.map((row, idx) => {
                                         const diffClass =
                                             row.diff > 0 ? styles.pillGood : row.diff < 0 ? styles.pillBad : styles.pillNeutral;
 
                                         return (
-                                            <div key={row.playerId} className={styles.mobileCard}>
+                                            <div
+                                                key={row.playerId}
+                                                className={styles.mobileCard}
+                                                onClick={() => goPlayer(row.playerId)}
+                                                onKeyDown={(e) => onRowKeyDown(e, row.playerId)}
+                                                role="button"
+                                                tabIndex={0}
+                                                aria-label={`Voir les matchs de ${row.name}`}
+                                            >
                                                 <div className={styles.mobileTop}>
                                                     <div className={styles.mobileName}>
                                                         <div className={styles.rank}>{idx + 1}</div>
@@ -289,7 +323,7 @@ export default function StandingsPage() {
                                                     </div>
                                                     <div className={styles.kpi}>
                                                         <div className={styles.kpiLabel}>TV</div>
-                                                        <div className={styles.kpiValue}>{row.ratio.toFixed(2)}</div>
+                                                        <div className={styles.kpiValue}>{(row.ratio * 100).toFixed(0)}%</div>
                                                     </div>
 
                                                     <div className={styles.kpi}>
@@ -312,7 +346,8 @@ export default function StandingsPage() {
                                             </div>
                                         );
                                     })}
-                                </div></>
+                                </div>
+                            </>
                         )}
                     </div>
                 </section>
