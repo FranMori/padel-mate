@@ -228,3 +228,16 @@
         width: 100%;
     }
 }
+
+.clickItem {
+    cursor: pointer;
+}
+
+.clickItem:focus {
+    outline: 2px solid rgba(124, 58, 237, 0.45);
+    outline-offset: 2px;
+}
+
+.clickItem:hover {
+    background: rgba(248, 250, 252, 0.7);
+}

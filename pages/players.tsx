@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { supabase } from "../lib/supabaseClient";
 import styles from "../styles/Players.page.module.css";
-import { fetchPlayers } from "../lib/playersApi"
+import { fetchPlayers } from "../lib/playersApi";
 
 type Player = {
     id: string;
@@ -9,6 +10,8 @@ type Player = {
 };
 
 export default function PlayersPage() {
+    const router = useRouter();
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [players, setPlayers] = useState<Player[]>([]);
@@ -21,9 +24,9 @@ export default function PlayersPage() {
             try {
                 const data = await fetchPlayers();
                 setPlayers(data);
-            }
-            catch (e) {
-                setError("Erreur")
+                setError(null);
+            } catch (e) {
+                setError("Erreur");
             }
 
             setLoading(false);
@@ -31,6 +34,17 @@ export default function PlayersPage() {
 
         loadPlayers();
     }, []);
+
+    const goPlayer = (id: string) => {
+        router.push(`/players/${id}`);
+    };
+
+    const onRowKeyDown = (e: React.KeyboardEvent, id: string) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            goPlayer(id);
+        }
+    };
 
     const addPlayerToDb = async (name: string) => {
         const { data, error } = await supabase
@@ -76,11 +90,17 @@ export default function PlayersPage() {
                             <>
                                 <ul className={styles.list}>
                                     {players.map((player) => (
-                                        <li key={player.id} className={styles.listItem}>
+                                        <li
+                                            key={player.id}
+                                            className={`${styles.listItem} ${styles.clickItem}`}
+                                            onClick={() => goPlayer(player.id)}
+                                            onKeyDown={(e) => onRowKeyDown(e, player.id)}
+                                            role="button"
+                                            tabIndex={0}
+                                            aria-label={`Voir les stats de ${player.name}`}
+                                        >
                                             <div className={styles.playerLeft}>
-                                                <div className={styles.avatar}>
-                                                    {initials(player.name)}
-                                                </div>
+                                                <div className={styles.avatar}>{initials(player.name)}</div>
                                                 <div className={styles.playerName}>{player.name}</div>
                                             </div>
                                         </li>
@@ -102,11 +122,7 @@ export default function PlayersPage() {
                                                 const normalized = name.toLowerCase();
                                                 if (name === "") return;
 
-                                                if (
-                                                    players.some(
-                                                        (p) => p.name.toLowerCase() === normalized
-                                                    )
-                                                ) {
+                                                if (players.some((p) => p.name.toLowerCase() === normalized)) {
                                                     alert("Ce nom existe déjà");
                                                     setNewPlayer("");
                                                     return;
@@ -115,9 +131,7 @@ export default function PlayersPage() {
                                                 const created = await addPlayerToDb(name);
                                                 if (created) {
                                                     setPlayers((prev) =>
-                                                        [...prev, created].sort((a, b) =>
-                                                            a.name.localeCompare(b.name)
-                                                        )
+                                                        [...prev, created].sort((a, b) => a.name.localeCompare(b.name))
                                                     );
                                                     setError(null);
                                                 }
@@ -141,9 +155,7 @@ export default function PlayersPage() {
                                                 const created = await addPlayerToDb(name);
                                                 if (created) {
                                                     setPlayers((prev) =>
-                                                        [...prev, created].sort((a, b) =>
-                                                            a.name.localeCompare(b.name)
-                                                        )
+                                                        [...prev, created].sort((a, b) => a.name.localeCompare(b.name))
                                                     );
                                                     setError(null);
                                                 }

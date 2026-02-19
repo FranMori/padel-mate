@@ -186,7 +186,7 @@ export default function NewMatchPage() {
                                 </div>
 
                                 <div className={styles.field}>
-                                    <label className={styles.label}>Équipe A</label>
+                                    <label className={styles.label}>Résultats Équipe A</label>
                                     <input
                                         className={styles.input}
                                         type="number"
@@ -200,7 +200,7 @@ export default function NewMatchPage() {
                                 </div>
 
                                 <div className={styles.field}>
-                                    <label className={styles.label}>Équipe B</label>
+                                    <label className={styles.label}>Résultats Équipe B</label>
                                     <input
                                         className={styles.input}
                                         type="number"
